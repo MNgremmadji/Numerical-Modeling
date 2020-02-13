@@ -103,9 +103,4 @@ for i in range(l):
     errl2.append(Err_l2) ## liste contenant les normes L2 de l'erreur
     h1=1/Nx ## pas h pour Nx donné
     h.append(h1) ## on collectionne tout les pas dans une liste
-#╚errl2=np.asarray(errl2) ## On transforme la liste en un array
-#h=np.asarray(h) ## On transforme la liste en array
-#fig=plt.figure
-#plot(np.log(1./np.sqrt(Nn)),np.log(errl2),'r') 
-#plt.title('La norme L2 de l erreur')
-#plt.savefig("normeL2erreur")
+
