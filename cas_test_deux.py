@@ -179,7 +179,7 @@ for j in range(m):
     plt.title('Solution numerique')
     plt.savefig("Surface_c_casTest_deux_{j}.png".format(j=j))
     plt.show()
-## la visualisation de la solution approchée rho avec la fonction plotdiscrete
+###la visualisation de la solution approchée rho avec la fonction plotdiscrete
     fig = plt.figure()
     plotdiscrete(M,rho[:,j])
     plt.title('Solution numerique')
