@@ -27,8 +27,8 @@ from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
 
 ## Données du problème
-D=1; dt=0.5## Pas de temps
-T=4;t=np.arange(0,T,dt);m=len(t);sigma=5e-3
+D=1; dt=0.1## Pas de temps
+T=1;t=np.arange(0,T,dt);m=len(t);sigma=5e-3
 def nu(XX,YY):
     return D
 
@@ -36,7 +36,7 @@ def nu(XX,YY):
 def rhozero(x,y):
     return (5/sigma)*np.exp(-((x-0.5)**2+(y-0.05)**2)/(2*sigma))
 
-## Definissons les fonctions maximum et minimum f+ et f-
+##### Definissons les fonctions maximum et minimum f+ et f-
 
 def f_plus(x):
     return 0.5*(x+np.abs(x))
@@ -50,13 +50,12 @@ Y = M.centres[:, 1]
 X, Y = np.meshgrid(X, Y)
 ## Les inconnues discrètes
 rho=np.zeros((N,m)); c=np.zeros((N,m))
-Khi1=[0.1,0.9];
-l=len(Khi1)
+khi=[1];l=len(khi)
 errl2=list()
 h=list();eps=50;normtpsesp=0;nbr_iter=0 ## nombre d'iteration sur khi
 while normtpsesp < eps:
-    for xyz in range(l): 
-        khi=Khi1[xyz]
+    for yzx in range(l): 
+        khi=khi1[yzx]
     ## Initialisation de rho
         for i in range(N):
             rho[i,0]=rhozero(M.centres[i][0],M.centres[i][1])
@@ -86,7 +85,7 @@ while normtpsesp < eps:
             D_A+=(M.mes_b*0.0).tolist() ## condition de neumann homogène
     ## Assemblage de la matrice
             Adiff=spsp.csr_matrix((D_A, (I_A, J_A)))
-## Definissons de la matrice diagonale contenant les mesures des volumes de contrôle
+### Definissons de la matrice diagonale contenant les mesures des volumes de contrôle
             Id=np.diag((M.compute_vol()))
     ### Definissons la Matrice de convection
             ki = M.Kin.tolist()
@@ -124,20 +123,20 @@ while normtpsesp < eps:
             for i in range(N):
                 w1[i]=M.compute_vol()[i]*(rho[i,j])**2
             w[j]=np.sqrt(np.sum(w1))
-        normtpsesp=np.linalg.norm(w,2) ## norme L2 en temps et en espace
+        normtpsesp=np.linalg.norm(w,2) ## norme L2
         for j in range(m):
 ## la visualisation de la solution approchée rho à chaque temps comme une surface
             fig = plt.figure()
             ax = fig.gca(projection='3d')
             surf=gca(projection='3d').plot_surface(X,Y,rho[:,j])
             plt.title('Solution numerique')
-            plt.savefig("Surface_rho_casTest_quatre_{j}.png".format(j=j))
+            plt.savefig("Surface_rho_casTest_cinq_{j}.png".format(j=j))
             plt.show()
-### la visualisation de la solution approchée rho à chaque temps avec la fonction plotdiscrete
+## la visualisation de la solution approchée rho à chaque temps avec la fonction plotdiscrete
             fig = plt.figure()
             plotdiscrete(M,rho[:,j])
             plt.title('Solution numerique')
-            plt.savefig("plotdiscrete_rho_casTest_quatre_{j}.png".format(j=j))
+            plt.savefig("plotdiscrete_rho_casTest_cinq_{j}.png".format(j=j))
             plt.title('solution numerique')
             plt.show()
     nbr_iter=nbr_iter+1
