@@ -1,9 +1,6 @@
-# projet_calcul_scientific
-Il est question résoudre  le modèle de chimiotaxie de Keller-Segel en dimension 2. Ce
-problème a été introduit pour décrire le mouvement des bactéries en présence d’un attractant
-chimique. Nous utilisons la méthode des volumes finis sur un carré.
-Quatre tests on été realisé selon les valeurs des paramètres du modèle de Keller-Segel.
-le fichier 'cas_test_un.py' contient les codes du premier test que nous avons effectué.
-le fichier 'cas_test_deux.py' contient les codes du second test.
-le fichier 'cas_test_trois.py' contient les codes du troisième test.
-le fichier 'cas_test_quatre.py' contient les codes du dernier test.
+Le projet de calcul scientifique porte sur la résolution d'un problème de chimiotoxie par la méthode des volumes finis. La chimiotaxie est un phénomène caractérisant le déplacement de bacteries, des spermatozoïdes, le tube pollinique ou d'un grain de pollen dû à la présence d'un attractant dans l'environnement.
+Deux cas d'étude sont envisagées:
+1) Dans projetCalculScientifique1, nous resolvons par la méthode des volumes finis le modèle de chimiotaxie en dimension 1.
+Quatre cas tests sont réalisés en fonction des paramètres de l'équation étudiée:
+ --T = 0.1, χ = 0, r = 0, D = 0.1
+ -- 
